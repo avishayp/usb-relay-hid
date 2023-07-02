@@ -2,24 +2,15 @@
 
 namespace DemoUI {
     public class RelayItem {
-        private readonly RelayInfo _relayInfo;
 
         public RelayItem(RelayInfo relayInfo) {
-            this._relayInfo = relayInfo;
+            RelayInfo = relayInfo;
         }
 
-        public RelayInfo RelayInfo {
-            get {
-                return this._relayInfo;
-            }
-        }
-
+        public RelayInfo RelayInfo { get; private set; }
 
         public override string ToString() {
-            return string.Format(
-                "#{0}  @ '{1}'",
-                this._relayInfo.Id,
-                this._relayInfo.HidInfo.Path);
+            return $"#{RelayInfo.Id} @{RelayInfo.HidInfo.Path}";
         }
     }
 }
