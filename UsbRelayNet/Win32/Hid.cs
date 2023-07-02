@@ -45,10 +45,7 @@ namespace UsbRelayNet.Win32 {
             /// </summary>
             public string VersionString {
                 get {
-                    return string.Format(
-                        "{0}.{1}",
-                        (this.VersionNumber >> 8) & 0xff,
-                        this.VersionNumber & 0xff);
+                    return $"{(this.VersionNumber >> 8) & 0xff}.{this.VersionNumber & 0xff}";
                 }
             }
         }

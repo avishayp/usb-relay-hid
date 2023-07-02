@@ -24,7 +24,7 @@ namespace DemoUI {
             this._labelsName = Enumerable.Range(0, 8)
                 .Select(i => new Label {
                     Anchor = AnchorStyles.None,
-                    Text = string.Format(@"Channel {0}", i + 1),
+                    Text = $"Channel {i + 1}",
                     AutoSize = true
                 })
                 .ToArray();
@@ -146,16 +146,14 @@ namespace DemoUI {
         }
 
         private void buttonConnect_Click(object sender, EventArgs e) {
-            if (this._selectedRelay == null) {
-                if (this.comboBoxPath.Items.Count > 0) {
-                    this._selectedRelay = this.comboBoxPath.Items
-                        .OfType<RelayItem>()
-                        .Select(x => new Relay(x.RelayInfo))
-                        .FirstOrDefault();
-                }
+            if (this._selectedRelay == null && this.comboBoxPath.Items.Count > 0) {
+                this._selectedRelay = this.comboBoxPath.Items
+                    .OfType<RelayItem>()
+                    .Select(x => new Relay(x.RelayInfo))
+                    .FirstOrDefault();
             }
 
-            if (!this._selectedRelay.IsOpened) {
+            if (this._selectedRelay != null && !this._selectedRelay.IsOpened) {
                 this._selectedRelay.Open();
             }
 
