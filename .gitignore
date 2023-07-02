@@ -1,6 +1,6 @@
 # visual studio build artifacts and user settings
 .vs
 [o|O]bj
-bin
+[b|B]in
 packages
 AssemblyInfoVersion.cs
